@@ -1,0 +1,2556 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="css/leaflet-measure.css">
+        <style>
+        #map {
+            width: 863px;
+            height: 580px;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/multi-style-layer.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="js/leaflet-measure.js"></script>
+        <script src="data/20212040_0.js"></script>
+        <script src="data/20212040_1.js"></script>
+        <script src="data/20212040_2.js"></script>
+        <script src="data/20412060_3.js"></script>
+        <script src="data/20412060_4.js"></script>
+        <script src="data/20412060_5.js"></script>
+        <script src="data/20612080_6.js"></script>
+        <script src="data/20612080_7.js"></script>
+        <script src="data/20612080_8.js"></script>
+        <script src="data/20812100_9.js"></script>
+        <script src="data/20812100_10.js"></script>
+        <script src="data/20812100_11.js"></script>
+        <script src="data/_12.js"></script>
+        <script src="data/_13.js"></script>
+        <script>
+        var highlightLayer;
+        function highlightFeature(e) {
+            highlightLayer = e.target;
+
+            if (e.target.feature.geometry.type === 'LineString') {
+              highlightLayer.setStyle({
+                color: '#ffff00',
+              });
+            } else {
+              highlightLayer.setStyle({
+                fillColor: '#ffff00',
+                fillOpacity: 1
+              });
+            }
+            highlightLayer.openPopup();
+        }
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:6
+        })
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
+        var measureControl = new L.Control.Measure({
+            position: 'topleft',
+            primaryLengthUnit: 'meters',
+            secondaryLengthUnit: 'kilometers',
+            primaryAreaUnit: 'sqmeters',
+            secondaryAreaUnit: 'hectares'
+        });
+        measureControl.addTo(map);
+        document.getElementsByClassName('leaflet-control-measure-toggle')[0]
+        .innerHTML = '';
+        document.getElementsByClassName('leaflet-control-measure-toggle')[0]
+        .className += ' fas fa-ruler';
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+            if (bounds_group.getLayers().length) {
+                map.fitBounds(bounds_group.getBounds());
+            }
+            map.setMaxBounds(map.getBounds());
+        }
+        function pop_20212040_0(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+        }
+
+        function style_20212040_0_0(feature) {
+            if (feature.properties['_mean'] >= -19.461035 && feature.properties['_mean'] <= -17.350285 ) {
+                return {
+                pane: 'pane_20212040_0',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -17.350285 && feature.properties['_mean'] <= -15.762540 ) {
+                return {
+                pane: 'pane_20212040_0',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -15.762540 && feature.properties['_mean'] <= -15.115091 ) {
+                return {
+                pane: 'pane_20212040_0',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -15.115091 && feature.properties['_mean'] <= -14.929538 ) {
+                return {
+                pane: 'pane_20212040_0',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -14.929538 && feature.properties['_mean'] <= -14.631920 ) {
+                return {
+                pane: 'pane_20212040_0',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -14.631920 && feature.properties['_mean'] <= -14.412609 ) {
+                return {
+                pane: 'pane_20212040_0',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -14.412609 && feature.properties['_mean'] <= -13.895781 ) {
+                return {
+                pane: 'pane_20212040_0',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -13.895781 && feature.properties['_mean'] <= -13.242771 ) {
+                return {
+                pane: 'pane_20212040_0',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -13.242771 && feature.properties['_mean'] <= -12.700877 ) {
+                return {
+                pane: 'pane_20212040_0',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -12.700877 && feature.properties['_mean'] <= -9.633226 ) {
+                return {
+                pane: 'pane_20212040_0',
+                interactive: true,
+            }
+            }
+        }
+        function style_20212040_0_1(feature) {
+            if (feature.properties['_mean'] >= -19.461035 && feature.properties['_mean'] <= -17.350285 ) {
+                return {
+                pane: 'pane_20212040_0',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(202,0,32,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -17.350285 && feature.properties['_mean'] <= -15.762540 ) {
+                return {
+                pane: 'pane_20212040_0',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(221,73,75,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -15.762540 && feature.properties['_mean'] <= -15.115091 ) {
+                return {
+                pane: 'pane_20212040_0',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(240,147,119,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -15.115091 && feature.properties['_mean'] <= -14.929538 ) {
+                return {
+                pane: 'pane_20212040_0',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(248,195,172,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -14.929538 && feature.properties['_mean'] <= -14.631920 ) {
+                return {
+                pane: 'pane_20212040_0',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(253,235,228,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -14.631920 && feature.properties['_mean'] <= -14.412609 ) {
+                return {
+                pane: 'pane_20212040_0',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(240,240,240,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -14.412609 && feature.properties['_mean'] <= -13.895781 ) {
+                return {
+                pane: 'pane_20212040_0',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(209,209,209,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -13.895781 && feature.properties['_mean'] <= -13.242771 ) {
+                return {
+                pane: 'pane_20212040_0',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(173,173,173,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -13.242771 && feature.properties['_mean'] <= -12.700877 ) {
+                return {
+                pane: 'pane_20212040_0',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(118,118,118,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -12.700877 && feature.properties['_mean'] <= -9.633226 ) {
+                return {
+                pane: 'pane_20212040_0',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(64,64,64,1.0)',
+                interactive: true,
+            }
+            }
+        }
+        map.createPane('pane_20212040_0');
+        map.getPane('pane_20212040_0').style.zIndex = 400;
+        map.getPane('pane_20212040_0').style['mix-blend-mode'] = 'normal';
+        var layer_20212040_0 = new L.geoJson.multiStyle(json_20212040_0, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_20212040_0',
+            layerName: 'layer_20212040_0',
+            pane: 'pane_20212040_0',
+            onEachFeature: pop_20212040_0,
+            styles: [style_20212040_0_0,style_20212040_0_1,]
+        });
+        bounds_group.addLayer(layer_20212040_0);
+        map.addLayer(layer_20212040_0);
+        function pop_20212040_1(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+        }
+
+        function style_20212040_1_0(feature) {
+            if (feature.properties['_mean'] >= -8.486756 && feature.properties['_mean'] <= -7.511538 ) {
+                return {
+                pane: 'pane_20212040_1',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -7.511538 && feature.properties['_mean'] <= -6.886435 ) {
+                return {
+                pane: 'pane_20212040_1',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -6.886435 && feature.properties['_mean'] <= -5.839896 ) {
+                return {
+                pane: 'pane_20212040_1',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -5.839896 && feature.properties['_mean'] <= -4.820326 ) {
+                return {
+                pane: 'pane_20212040_1',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -4.820326 && feature.properties['_mean'] <= -2.705685 ) {
+                return {
+                pane: 'pane_20212040_1',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -2.705685 && feature.properties['_mean'] <= -2.218056 ) {
+                return {
+                pane: 'pane_20212040_1',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -2.218056 && feature.properties['_mean'] <= -1.957828 ) {
+                return {
+                pane: 'pane_20212040_1',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -1.957828 && feature.properties['_mean'] <= -1.324394 ) {
+                return {
+                pane: 'pane_20212040_1',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -1.324394 && feature.properties['_mean'] <= -0.346924 ) {
+                return {
+                pane: 'pane_20212040_1',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -0.346924 && feature.properties['_mean'] <= 1.676816 ) {
+                return {
+                pane: 'pane_20212040_1',
+                interactive: true,
+            }
+            }
+        }
+        function style_20212040_1_1(feature) {
+            if (feature.properties['_mean'] >= -8.486756 && feature.properties['_mean'] <= -7.511538 ) {
+                return {
+                pane: 'pane_20212040_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(64,64,64,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -7.511538 && feature.properties['_mean'] <= -6.886435 ) {
+                return {
+                pane: 'pane_20212040_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(118,118,118,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -6.886435 && feature.properties['_mean'] <= -5.839896 ) {
+                return {
+                pane: 'pane_20212040_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(173,173,173,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -5.839896 && feature.properties['_mean'] <= -4.820326 ) {
+                return {
+                pane: 'pane_20212040_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(209,209,209,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -4.820326 && feature.properties['_mean'] <= -2.705685 ) {
+                return {
+                pane: 'pane_20212040_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(240,240,240,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -2.705685 && feature.properties['_mean'] <= -2.218056 ) {
+                return {
+                pane: 'pane_20212040_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(253,235,228,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -2.218056 && feature.properties['_mean'] <= -1.957828 ) {
+                return {
+                pane: 'pane_20212040_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(248,195,172,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -1.957828 && feature.properties['_mean'] <= -1.324394 ) {
+                return {
+                pane: 'pane_20212040_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(240,147,119,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -1.324394 && feature.properties['_mean'] <= -0.346924 ) {
+                return {
+                pane: 'pane_20212040_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(221,73,75,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -0.346924 && feature.properties['_mean'] <= 1.676816 ) {
+                return {
+                pane: 'pane_20212040_1',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(202,0,32,1.0)',
+                interactive: true,
+            }
+            }
+        }
+        map.createPane('pane_20212040_1');
+        map.getPane('pane_20212040_1').style.zIndex = 401;
+        map.getPane('pane_20212040_1').style['mix-blend-mode'] = 'normal';
+        var layer_20212040_1 = new L.geoJson.multiStyle(json_20212040_1, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_20212040_1',
+            layerName: 'layer_20212040_1',
+            pane: 'pane_20212040_1',
+            onEachFeature: pop_20212040_1,
+            styles: [style_20212040_1_0,style_20212040_1_1,]
+        });
+        bounds_group.addLayer(layer_20212040_1);
+        map.addLayer(layer_20212040_1);
+        function pop_20212040_2(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+        }
+
+        function style_20212040_2_0(feature) {
+            if (feature.properties['_mean'] >= 16.077883 && feature.properties['_mean'] <= 20.305262 ) {
+                return {
+                pane: 'pane_20212040_2',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 20.305262 && feature.properties['_mean'] <= 22.875000 ) {
+                return {
+                pane: 'pane_20212040_2',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 22.875000 && feature.properties['_mean'] <= 24.247079 ) {
+                return {
+                pane: 'pane_20212040_2',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 24.247079 && feature.properties['_mean'] <= 25.182464 ) {
+                return {
+                pane: 'pane_20212040_2',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 25.182464 && feature.properties['_mean'] <= 26.627175 ) {
+                return {
+                pane: 'pane_20212040_2',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 26.627175 && feature.properties['_mean'] <= 27.423622 ) {
+                return {
+                pane: 'pane_20212040_2',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 27.423622 && feature.properties['_mean'] <= 28.003770 ) {
+                return {
+                pane: 'pane_20212040_2',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 28.003770 && feature.properties['_mean'] <= 30.761047 ) {
+                return {
+                pane: 'pane_20212040_2',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 30.761047 && feature.properties['_mean'] <= 33.657012 ) {
+                return {
+                pane: 'pane_20212040_2',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 33.657012 && feature.properties['_mean'] <= 51.996672 ) {
+                return {
+                pane: 'pane_20212040_2',
+                interactive: true,
+            }
+            }
+        }
+        function style_20212040_2_1(feature) {
+            if (feature.properties['_mean'] >= 16.077883 && feature.properties['_mean'] <= 20.305262 ) {
+                return {
+                pane: 'pane_20212040_2',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(240,249,232,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 20.305262 && feature.properties['_mean'] <= 22.875000 ) {
+                return {
+                pane: 'pane_20212040_2',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(216,240,213,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 22.875000 && feature.properties['_mean'] <= 24.247079 ) {
+                return {
+                pane: 'pane_20212040_2',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(192,231,193,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 24.247079 && feature.properties['_mean'] <= 25.182464 ) {
+                return {
+                pane: 'pane_20212040_2',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(165,220,191,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 25.182464 && feature.properties['_mean'] <= 26.627175 ) {
+                return {
+                pane: 'pane_20212040_2',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(137,210,194,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 26.627175 && feature.properties['_mean'] <= 27.423622 ) {
+                return {
+                pane: 'pane_20212040_2',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(110,195,198,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 27.423622 && feature.properties['_mean'] <= 28.003770 ) {
+                return {
+                pane: 'pane_20212040_2',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(86,176,200,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 28.003770 && feature.properties['_mean'] <= 30.761047 ) {
+                return {
+                pane: 'pane_20212040_2',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(60,156,199,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 30.761047 && feature.properties['_mean'] <= 33.657012 ) {
+                return {
+                pane: 'pane_20212040_2',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(34,130,186,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 33.657012 && feature.properties['_mean'] <= 51.996672 ) {
+                return {
+                pane: 'pane_20212040_2',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(8,104,172,1.0)',
+                interactive: true,
+            }
+            }
+        }
+        map.createPane('pane_20212040_2');
+        map.getPane('pane_20212040_2').style.zIndex = 402;
+        map.getPane('pane_20212040_2').style['mix-blend-mode'] = 'normal';
+        var layer_20212040_2 = new L.geoJson.multiStyle(json_20212040_2, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_20212040_2',
+            layerName: 'layer_20212040_2',
+            pane: 'pane_20212040_2',
+            onEachFeature: pop_20212040_2,
+            styles: [style_20212040_2_0,style_20212040_2_1,]
+        });
+        bounds_group.addLayer(layer_20212040_2);
+        map.addLayer(layer_20212040_2);
+        function pop_20412060_3(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+        }
+
+        function style_20412060_3_0(feature) {
+            if (feature.properties['_mean'] >= -18.058577 && feature.properties['_mean'] <= -15.879639 ) {
+                return {
+                pane: 'pane_20412060_3',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(202,0,32,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -15.879639 && feature.properties['_mean'] <= -14.079892 ) {
+                return {
+                pane: 'pane_20412060_3',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(221,73,75,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -14.079892 && feature.properties['_mean'] <= -13.550982 ) {
+                return {
+                pane: 'pane_20412060_3',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(240,147,119,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -13.550982 && feature.properties['_mean'] <= -13.381910 ) {
+                return {
+                pane: 'pane_20412060_3',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(248,195,172,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -13.381910 && feature.properties['_mean'] <= -13.122179 ) {
+                return {
+                pane: 'pane_20412060_3',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(253,235,228,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -13.122179 && feature.properties['_mean'] <= -12.887694 ) {
+                return {
+                pane: 'pane_20412060_3',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(240,240,240,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -12.887694 && feature.properties['_mean'] <= -12.371125 ) {
+                return {
+                pane: 'pane_20412060_3',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(209,209,209,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -12.371125 && feature.properties['_mean'] <= -11.728325 ) {
+                return {
+                pane: 'pane_20412060_3',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(173,173,173,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -11.728325 && feature.properties['_mean'] <= -11.182318 ) {
+                return {
+                pane: 'pane_20412060_3',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(118,118,118,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -11.182318 && feature.properties['_mean'] <= -8.182226 ) {
+                return {
+                pane: 'pane_20412060_3',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(64,64,64,1.0)',
+                interactive: true,
+            }
+            }
+        }
+        map.createPane('pane_20412060_3');
+        map.getPane('pane_20412060_3').style.zIndex = 403;
+        map.getPane('pane_20412060_3').style['mix-blend-mode'] = 'normal';
+        var layer_20412060_3 = new L.geoJson(json_20412060_3, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_20412060_3',
+            layerName: 'layer_20412060_3',
+            pane: 'pane_20412060_3',
+            onEachFeature: pop_20412060_3,
+            style: style_20412060_3_0,
+        });
+        bounds_group.addLayer(layer_20412060_3);
+        map.addLayer(layer_20412060_3);
+        function pop_20412060_4(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+        }
+
+        function style_20412060_4_0(feature) {
+            if (feature.properties['_mean'] >= -6.778309 && feature.properties['_mean'] <= -6.114699 ) {
+                return {
+                pane: 'pane_20412060_4',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -6.114699 && feature.properties['_mean'] <= -5.551550 ) {
+                return {
+                pane: 'pane_20412060_4',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -5.551550 && feature.properties['_mean'] <= -4.405511 ) {
+                return {
+                pane: 'pane_20412060_4',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -4.405511 && feature.properties['_mean'] <= -3.503284 ) {
+                return {
+                pane: 'pane_20412060_4',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -3.503284 && feature.properties['_mean'] <= -1.402313 ) {
+                return {
+                pane: 'pane_20412060_4',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -1.402313 && feature.properties['_mean'] <= -0.887822 ) {
+                return {
+                pane: 'pane_20412060_4',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -0.887822 && feature.properties['_mean'] <= -0.583529 ) {
+                return {
+                pane: 'pane_20412060_4',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -0.583529 && feature.properties['_mean'] <= 0.020166 ) {
+                return {
+                pane: 'pane_20412060_4',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 0.020166 && feature.properties['_mean'] <= 0.903868 ) {
+                return {
+                pane: 'pane_20412060_4',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 0.903868 && feature.properties['_mean'] <= 2.951504 ) {
+                return {
+                pane: 'pane_20412060_4',
+                interactive: true,
+            }
+            }
+        }
+        function style_20412060_4_1(feature) {
+            if (feature.properties['_mean'] >= -6.778309 && feature.properties['_mean'] <= -6.114699 ) {
+                return {
+                pane: 'pane_20412060_4',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(64,64,64,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -6.114699 && feature.properties['_mean'] <= -5.551550 ) {
+                return {
+                pane: 'pane_20412060_4',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(118,118,118,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -5.551550 && feature.properties['_mean'] <= -4.405511 ) {
+                return {
+                pane: 'pane_20412060_4',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(173,173,173,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -4.405511 && feature.properties['_mean'] <= -3.503284 ) {
+                return {
+                pane: 'pane_20412060_4',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(209,209,209,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -3.503284 && feature.properties['_mean'] <= -1.402313 ) {
+                return {
+                pane: 'pane_20412060_4',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(240,240,240,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -1.402313 && feature.properties['_mean'] <= -0.887822 ) {
+                return {
+                pane: 'pane_20412060_4',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(253,235,228,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -0.887822 && feature.properties['_mean'] <= -0.583529 ) {
+                return {
+                pane: 'pane_20412060_4',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(248,195,172,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -0.583529 && feature.properties['_mean'] <= 0.020166 ) {
+                return {
+                pane: 'pane_20412060_4',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(240,147,119,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 0.020166 && feature.properties['_mean'] <= 0.903868 ) {
+                return {
+                pane: 'pane_20412060_4',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(221,73,75,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 0.903868 && feature.properties['_mean'] <= 2.951504 ) {
+                return {
+                pane: 'pane_20412060_4',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(202,0,32,1.0)',
+                interactive: true,
+            }
+            }
+        }
+        map.createPane('pane_20412060_4');
+        map.getPane('pane_20412060_4').style.zIndex = 404;
+        map.getPane('pane_20412060_4').style['mix-blend-mode'] = 'normal';
+        var layer_20412060_4 = new L.geoJson.multiStyle(json_20412060_4, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_20412060_4',
+            layerName: 'layer_20412060_4',
+            pane: 'pane_20412060_4',
+            onEachFeature: pop_20412060_4,
+            styles: [style_20412060_4_0,style_20412060_4_1,]
+        });
+        bounds_group.addLayer(layer_20412060_4);
+        map.addLayer(layer_20412060_4);
+        function pop_20412060_5(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+        }
+
+        function style_20412060_5_0(feature) {
+            if (feature.properties['_mean'] >= 16.077883 && feature.properties['_mean'] <= 20.305262 ) {
+                return {
+                pane: 'pane_20412060_5',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 20.305262 && feature.properties['_mean'] <= 22.875000 ) {
+                return {
+                pane: 'pane_20412060_5',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 22.875000 && feature.properties['_mean'] <= 24.247079 ) {
+                return {
+                pane: 'pane_20412060_5',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 24.247079 && feature.properties['_mean'] <= 25.182464 ) {
+                return {
+                pane: 'pane_20412060_5',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 25.182464 && feature.properties['_mean'] <= 26.627175 ) {
+                return {
+                pane: 'pane_20412060_5',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 26.627175 && feature.properties['_mean'] <= 27.423622 ) {
+                return {
+                pane: 'pane_20412060_5',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 27.423622 && feature.properties['_mean'] <= 28.003770 ) {
+                return {
+                pane: 'pane_20412060_5',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 28.003770 && feature.properties['_mean'] <= 30.761047 ) {
+                return {
+                pane: 'pane_20412060_5',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 30.761047 && feature.properties['_mean'] <= 33.657012 ) {
+                return {
+                pane: 'pane_20412060_5',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 33.657012 && feature.properties['_mean'] <= 51.996672 ) {
+                return {
+                pane: 'pane_20412060_5',
+                interactive: true,
+            }
+            }
+        }
+        function style_20412060_5_1(feature) {
+            if (feature.properties['_mean'] >= 16.077883 && feature.properties['_mean'] <= 20.305262 ) {
+                return {
+                pane: 'pane_20412060_5',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(240,249,232,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 20.305262 && feature.properties['_mean'] <= 22.875000 ) {
+                return {
+                pane: 'pane_20412060_5',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(216,240,213,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 22.875000 && feature.properties['_mean'] <= 24.247079 ) {
+                return {
+                pane: 'pane_20412060_5',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(192,231,193,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 24.247079 && feature.properties['_mean'] <= 25.182464 ) {
+                return {
+                pane: 'pane_20412060_5',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(165,220,191,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 25.182464 && feature.properties['_mean'] <= 26.627175 ) {
+                return {
+                pane: 'pane_20412060_5',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(137,210,194,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 26.627175 && feature.properties['_mean'] <= 27.423622 ) {
+                return {
+                pane: 'pane_20412060_5',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(110,195,198,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 27.423622 && feature.properties['_mean'] <= 28.003770 ) {
+                return {
+                pane: 'pane_20412060_5',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(86,176,200,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 28.003770 && feature.properties['_mean'] <= 30.761047 ) {
+                return {
+                pane: 'pane_20412060_5',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(60,156,199,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 30.761047 && feature.properties['_mean'] <= 33.657012 ) {
+                return {
+                pane: 'pane_20412060_5',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(34,130,186,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 33.657012 && feature.properties['_mean'] <= 51.996672 ) {
+                return {
+                pane: 'pane_20412060_5',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(8,104,172,1.0)',
+                interactive: true,
+            }
+            }
+        }
+        map.createPane('pane_20412060_5');
+        map.getPane('pane_20412060_5').style.zIndex = 405;
+        map.getPane('pane_20412060_5').style['mix-blend-mode'] = 'normal';
+        var layer_20412060_5 = new L.geoJson.multiStyle(json_20412060_5, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_20412060_5',
+            layerName: 'layer_20412060_5',
+            pane: 'pane_20412060_5',
+            onEachFeature: pop_20412060_5,
+            styles: [style_20412060_5_0,style_20412060_5_1,]
+        });
+        bounds_group.addLayer(layer_20412060_5);
+        map.addLayer(layer_20412060_5);
+        function pop_20612080_6(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+        }
+
+        function style_20612080_6_0(feature) {
+            if (feature.properties['_mean'] >= -15.688927 && feature.properties['_mean'] <= -13.221768 ) {
+                return {
+                pane: 'pane_20612080_6',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -13.221768 && feature.properties['_mean'] <= -11.099352 ) {
+                return {
+                pane: 'pane_20612080_6',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -11.099352 && feature.properties['_mean'] <= -10.700632 ) {
+                return {
+                pane: 'pane_20612080_6',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -10.700632 && feature.properties['_mean'] <= -10.594456 ) {
+                return {
+                pane: 'pane_20612080_6',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -10.594456 && feature.properties['_mean'] <= -10.284274 ) {
+                return {
+                pane: 'pane_20612080_6',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -10.284274 && feature.properties['_mean'] <= -9.864810 ) {
+                return {
+                pane: 'pane_20612080_6',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -9.864810 && feature.properties['_mean'] <= -9.702877 ) {
+                return {
+                pane: 'pane_20612080_6',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -9.702877 && feature.properties['_mean'] <= -9.066667 ) {
+                return {
+                pane: 'pane_20612080_6',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -9.066667 && feature.properties['_mean'] <= -8.324243 ) {
+                return {
+                pane: 'pane_20612080_6',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -8.324243 && feature.properties['_mean'] <= -5.728572 ) {
+                return {
+                pane: 'pane_20612080_6',
+                interactive: true,
+            }
+            }
+        }
+        function style_20612080_6_1(feature) {
+            if (feature.properties['_mean'] >= -15.688927 && feature.properties['_mean'] <= -13.221768 ) {
+                return {
+                pane: 'pane_20612080_6',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(202,0,32,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -13.221768 && feature.properties['_mean'] <= -11.099352 ) {
+                return {
+                pane: 'pane_20612080_6',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(221,73,75,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -11.099352 && feature.properties['_mean'] <= -10.700632 ) {
+                return {
+                pane: 'pane_20612080_6',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(240,147,119,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -10.700632 && feature.properties['_mean'] <= -10.594456 ) {
+                return {
+                pane: 'pane_20612080_6',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(248,195,172,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -10.594456 && feature.properties['_mean'] <= -10.284274 ) {
+                return {
+                pane: 'pane_20612080_6',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(253,235,228,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -10.284274 && feature.properties['_mean'] <= -9.864810 ) {
+                return {
+                pane: 'pane_20612080_6',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(240,240,240,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -9.864810 && feature.properties['_mean'] <= -9.702877 ) {
+                return {
+                pane: 'pane_20612080_6',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(209,209,209,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -9.702877 && feature.properties['_mean'] <= -9.066667 ) {
+                return {
+                pane: 'pane_20612080_6',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(173,173,173,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -9.066667 && feature.properties['_mean'] <= -8.324243 ) {
+                return {
+                pane: 'pane_20612080_6',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(118,118,118,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -8.324243 && feature.properties['_mean'] <= -5.728572 ) {
+                return {
+                pane: 'pane_20612080_6',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(64,64,64,1.0)',
+                interactive: true,
+            }
+            }
+        }
+        map.createPane('pane_20612080_6');
+        map.getPane('pane_20612080_6').style.zIndex = 406;
+        map.getPane('pane_20612080_6').style['mix-blend-mode'] = 'normal';
+        var layer_20612080_6 = new L.geoJson.multiStyle(json_20612080_6, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_20612080_6',
+            layerName: 'layer_20612080_6',
+            pane: 'pane_20612080_6',
+            onEachFeature: pop_20612080_6,
+            styles: [style_20612080_6_0,style_20612080_6_1,]
+        });
+        bounds_group.addLayer(layer_20612080_6);
+        map.addLayer(layer_20612080_6);
+        function pop_20612080_7(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+        }
+
+        function style_20612080_7_0(feature) {
+            if (feature.properties['_mean'] >= -3.946508 && feature.properties['_mean'] <= -3.174438 ) {
+                return {
+                pane: 'pane_20612080_7',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -3.174438 && feature.properties['_mean'] <= -2.963756 ) {
+                return {
+                pane: 'pane_20612080_7',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -2.963756 && feature.properties['_mean'] <= -1.846783 ) {
+                return {
+                pane: 'pane_20612080_7',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -1.846783 && feature.properties['_mean'] <= -0.777962 ) {
+                return {
+                pane: 'pane_20612080_7',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -0.777962 && feature.properties['_mean'] <= 0.867068 ) {
+                return {
+                pane: 'pane_20612080_7',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 0.867068 && feature.properties['_mean'] <= 1.546109 ) {
+                return {
+                pane: 'pane_20612080_7',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 1.546109 && feature.properties['_mean'] <= 1.925485 ) {
+                return {
+                pane: 'pane_20612080_7',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 1.925485 && feature.properties['_mean'] <= 2.440892 ) {
+                return {
+                pane: 'pane_20612080_7',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 2.440892 && feature.properties['_mean'] <= 3.030310 ) {
+                return {
+                pane: 'pane_20612080_7',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 3.030310 && feature.properties['_mean'] <= 5.163129 ) {
+                return {
+                pane: 'pane_20612080_7',
+                interactive: true,
+            }
+            }
+        }
+        function style_20612080_7_1(feature) {
+            if (feature.properties['_mean'] >= -3.946508 && feature.properties['_mean'] <= -3.174438 ) {
+                return {
+                pane: 'pane_20612080_7',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(64,64,64,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -3.174438 && feature.properties['_mean'] <= -2.963756 ) {
+                return {
+                pane: 'pane_20612080_7',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(118,118,118,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -2.963756 && feature.properties['_mean'] <= -1.846783 ) {
+                return {
+                pane: 'pane_20612080_7',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(173,173,173,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -1.846783 && feature.properties['_mean'] <= -0.777962 ) {
+                return {
+                pane: 'pane_20612080_7',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(209,209,209,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -0.777962 && feature.properties['_mean'] <= 0.867068 ) {
+                return {
+                pane: 'pane_20612080_7',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(240,240,240,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 0.867068 && feature.properties['_mean'] <= 1.546109 ) {
+                return {
+                pane: 'pane_20612080_7',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(253,235,228,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 1.546109 && feature.properties['_mean'] <= 1.925485 ) {
+                return {
+                pane: 'pane_20612080_7',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(248,195,172,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 1.925485 && feature.properties['_mean'] <= 2.440892 ) {
+                return {
+                pane: 'pane_20612080_7',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(240,147,119,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 2.440892 && feature.properties['_mean'] <= 3.030310 ) {
+                return {
+                pane: 'pane_20612080_7',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(221,73,75,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 3.030310 && feature.properties['_mean'] <= 5.163129 ) {
+                return {
+                pane: 'pane_20612080_7',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(202,0,32,1.0)',
+                interactive: true,
+            }
+            }
+        }
+        map.createPane('pane_20612080_7');
+        map.getPane('pane_20612080_7').style.zIndex = 407;
+        map.getPane('pane_20612080_7').style['mix-blend-mode'] = 'normal';
+        var layer_20612080_7 = new L.geoJson.multiStyle(json_20612080_7, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_20612080_7',
+            layerName: 'layer_20612080_7',
+            pane: 'pane_20612080_7',
+            onEachFeature: pop_20612080_7,
+            styles: [style_20612080_7_0,style_20612080_7_1,]
+        });
+        bounds_group.addLayer(layer_20612080_7);
+        map.addLayer(layer_20612080_7);
+        function pop_20612080_8(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+        }
+
+        function style_20612080_8_0(feature) {
+            if (feature.properties['_mean'] >= 17.088704 && feature.properties['_mean'] <= 21.449852 ) {
+                return {
+                pane: 'pane_20612080_8',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 21.449852 && feature.properties['_mean'] <= 23.833334 ) {
+                return {
+                pane: 'pane_20612080_8',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 23.833334 && feature.properties['_mean'] <= 25.366556 ) {
+                return {
+                pane: 'pane_20612080_8',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 25.366556 && feature.properties['_mean'] <= 25.995435 ) {
+                return {
+                pane: 'pane_20612080_8',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 25.995435 && feature.properties['_mean'] <= 27.793975 ) {
+                return {
+                pane: 'pane_20612080_8',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 27.793975 && feature.properties['_mean'] <= 28.552342 ) {
+                return {
+                pane: 'pane_20612080_8',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 28.552342 && feature.properties['_mean'] <= 29.265865 ) {
+                return {
+                pane: 'pane_20612080_8',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 29.265865 && feature.properties['_mean'] <= 32.315093 ) {
+                return {
+                pane: 'pane_20612080_8',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 32.315093 && feature.properties['_mean'] <= 35.203231 ) {
+                return {
+                pane: 'pane_20612080_8',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 35.203231 && feature.properties['_mean'] <= 54.303945 ) {
+                return {
+                pane: 'pane_20612080_8',
+                interactive: true,
+            }
+            }
+        }
+        function style_20612080_8_1(feature) {
+            if (feature.properties['_mean'] >= 17.088704 && feature.properties['_mean'] <= 21.449852 ) {
+                return {
+                pane: 'pane_20612080_8',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(240,249,232,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 21.449852 && feature.properties['_mean'] <= 23.833334 ) {
+                return {
+                pane: 'pane_20612080_8',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(216,240,213,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 23.833334 && feature.properties['_mean'] <= 25.366556 ) {
+                return {
+                pane: 'pane_20612080_8',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(192,231,193,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 25.366556 && feature.properties['_mean'] <= 25.995435 ) {
+                return {
+                pane: 'pane_20612080_8',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(165,220,191,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 25.995435 && feature.properties['_mean'] <= 27.793975 ) {
+                return {
+                pane: 'pane_20612080_8',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(137,210,194,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 27.793975 && feature.properties['_mean'] <= 28.552342 ) {
+                return {
+                pane: 'pane_20612080_8',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(110,195,198,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 28.552342 && feature.properties['_mean'] <= 29.265865 ) {
+                return {
+                pane: 'pane_20612080_8',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(86,176,200,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 29.265865 && feature.properties['_mean'] <= 32.315093 ) {
+                return {
+                pane: 'pane_20612080_8',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(60,156,199,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 32.315093 && feature.properties['_mean'] <= 35.203231 ) {
+                return {
+                pane: 'pane_20612080_8',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(34,130,186,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 35.203231 && feature.properties['_mean'] <= 54.303945 ) {
+                return {
+                pane: 'pane_20612080_8',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(8,104,172,1.0)',
+                interactive: true,
+            }
+            }
+        }
+        map.createPane('pane_20612080_8');
+        map.getPane('pane_20612080_8').style.zIndex = 408;
+        map.getPane('pane_20612080_8').style['mix-blend-mode'] = 'normal';
+        var layer_20612080_8 = new L.geoJson.multiStyle(json_20612080_8, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_20612080_8',
+            layerName: 'layer_20612080_8',
+            pane: 'pane_20612080_8',
+            onEachFeature: pop_20612080_8,
+            styles: [style_20612080_8_0,style_20612080_8_1,]
+        });
+        bounds_group.addLayer(layer_20612080_8);
+        map.addLayer(layer_20612080_8);
+        function pop_20812100_9(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+        }
+
+        function style_20812100_9_0(feature) {
+            if (feature.properties['_mean'] >= -12.522115 && feature.properties['_mean'] <= -10.019692 ) {
+                return {
+                pane: 'pane_20812100_9',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -10.019692 && feature.properties['_mean'] <= -7.863410 ) {
+                return {
+                pane: 'pane_20812100_9',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -7.863410 && feature.properties['_mean'] <= -7.729786 ) {
+                return {
+                pane: 'pane_20812100_9',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -7.729786 && feature.properties['_mean'] <= -7.180387 ) {
+                return {
+                pane: 'pane_20812100_9',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -7.180387 && feature.properties['_mean'] <= -6.813367 ) {
+                return {
+                pane: 'pane_20812100_9',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -6.813367 && feature.properties['_mean'] <= -6.544962 ) {
+                return {
+                pane: 'pane_20812100_9',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -6.544962 && feature.properties['_mean'] <= -6.213895 ) {
+                return {
+                pane: 'pane_20812100_9',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -6.213895 && feature.properties['_mean'] <= -6.037210 ) {
+                return {
+                pane: 'pane_20812100_9',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -6.037210 && feature.properties['_mean'] <= -5.133970 ) {
+                return {
+                pane: 'pane_20812100_9',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -5.133970 && feature.properties['_mean'] <= -2.955861 ) {
+                return {
+                pane: 'pane_20812100_9',
+                interactive: true,
+            }
+            }
+        }
+        function style_20812100_9_1(feature) {
+            if (feature.properties['_mean'] >= -12.522115 && feature.properties['_mean'] <= -10.019692 ) {
+                return {
+                pane: 'pane_20812100_9',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(202,0,32,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -10.019692 && feature.properties['_mean'] <= -7.863410 ) {
+                return {
+                pane: 'pane_20812100_9',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(221,73,75,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -7.863410 && feature.properties['_mean'] <= -7.729786 ) {
+                return {
+                pane: 'pane_20812100_9',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(240,147,119,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -7.729786 && feature.properties['_mean'] <= -7.180387 ) {
+                return {
+                pane: 'pane_20812100_9',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(248,195,172,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -7.180387 && feature.properties['_mean'] <= -6.813367 ) {
+                return {
+                pane: 'pane_20812100_9',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(253,235,228,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -6.813367 && feature.properties['_mean'] <= -6.544962 ) {
+                return {
+                pane: 'pane_20812100_9',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(240,240,240,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -6.544962 && feature.properties['_mean'] <= -6.213895 ) {
+                return {
+                pane: 'pane_20812100_9',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(209,209,209,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -6.213895 && feature.properties['_mean'] <= -6.037210 ) {
+                return {
+                pane: 'pane_20812100_9',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(173,173,173,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -6.037210 && feature.properties['_mean'] <= -5.133970 ) {
+                return {
+                pane: 'pane_20812100_9',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(118,118,118,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= -5.133970 && feature.properties['_mean'] <= -2.955861 ) {
+                return {
+                pane: 'pane_20812100_9',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(64,64,64,1.0)',
+                interactive: true,
+            }
+            }
+        }
+        map.createPane('pane_20812100_9');
+        map.getPane('pane_20812100_9').style.zIndex = 409;
+        map.getPane('pane_20812100_9').style['mix-blend-mode'] = 'normal';
+        var layer_20812100_9 = new L.geoJson.multiStyle(json_20812100_9, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_20812100_9',
+            layerName: 'layer_20812100_9',
+            pane: 'pane_20812100_9',
+            onEachFeature: pop_20812100_9,
+            styles: [style_20812100_9_0,style_20812100_9_1,]
+        });
+        bounds_group.addLayer(layer_20812100_9);
+        map.addLayer(layer_20812100_9);
+        function pop_20812100_10(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+        }
+
+        function style_20812100_10_0(feature) {
+            if (feature.properties['_mean'] >= 15.366713 && feature.properties['_mean'] <= 19.350827 ) {
+                return {
+                pane: 'pane_20812100_10',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 19.350827 && feature.properties['_mean'] <= 21.958333 ) {
+                return {
+                pane: 'pane_20812100_10',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 21.958333 && feature.properties['_mean'] <= 23.282038 ) {
+                return {
+                pane: 'pane_20812100_10',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 23.282038 && feature.properties['_mean'] <= 24.154493 ) {
+                return {
+                pane: 'pane_20812100_10',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 24.154493 && feature.properties['_mean'] <= 25.671955 ) {
+                return {
+                pane: 'pane_20812100_10',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 25.671955 && feature.properties['_mean'] <= 26.208590 ) {
+                return {
+                pane: 'pane_20812100_10',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 26.208590 && feature.properties['_mean'] <= 26.712989 ) {
+                return {
+                pane: 'pane_20812100_10',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 26.712989 && feature.properties['_mean'] <= 29.734449 ) {
+                return {
+                pane: 'pane_20812100_10',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 29.734449 && feature.properties['_mean'] <= 32.018801 ) {
+                return {
+                pane: 'pane_20812100_10',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 32.018801 && feature.properties['_mean'] <= 49.721634 ) {
+                return {
+                pane: 'pane_20812100_10',
+                interactive: true,
+            }
+            }
+        }
+        function style_20812100_10_1(feature) {
+            if (feature.properties['_mean'] >= 15.366713 && feature.properties['_mean'] <= 19.350827 ) {
+                return {
+                pane: 'pane_20812100_10',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(64,64,64,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 19.350827 && feature.properties['_mean'] <= 21.958333 ) {
+                return {
+                pane: 'pane_20812100_10',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(118,118,118,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 21.958333 && feature.properties['_mean'] <= 23.282038 ) {
+                return {
+                pane: 'pane_20812100_10',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(173,173,173,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 23.282038 && feature.properties['_mean'] <= 24.154493 ) {
+                return {
+                pane: 'pane_20812100_10',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(209,209,209,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 24.154493 && feature.properties['_mean'] <= 25.671955 ) {
+                return {
+                pane: 'pane_20812100_10',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(240,240,240,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 25.671955 && feature.properties['_mean'] <= 26.208590 ) {
+                return {
+                pane: 'pane_20812100_10',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(253,235,228,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 26.208590 && feature.properties['_mean'] <= 26.712989 ) {
+                return {
+                pane: 'pane_20812100_10',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(248,195,172,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 26.712989 && feature.properties['_mean'] <= 29.734449 ) {
+                return {
+                pane: 'pane_20812100_10',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(240,147,119,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 29.734449 && feature.properties['_mean'] <= 32.018801 ) {
+                return {
+                pane: 'pane_20812100_10',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(221,73,75,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 32.018801 && feature.properties['_mean'] <= 49.721634 ) {
+                return {
+                pane: 'pane_20812100_10',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(202,0,32,1.0)',
+                interactive: true,
+            }
+            }
+        }
+        map.createPane('pane_20812100_10');
+        map.getPane('pane_20812100_10').style.zIndex = 410;
+        map.getPane('pane_20812100_10').style['mix-blend-mode'] = 'normal';
+        var layer_20812100_10 = new L.geoJson.multiStyle(json_20812100_10, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_20812100_10',
+            layerName: 'layer_20812100_10',
+            pane: 'pane_20812100_10',
+            onEachFeature: pop_20812100_10,
+            styles: [style_20812100_10_0,style_20812100_10_1,]
+        });
+        bounds_group.addLayer(layer_20812100_10);
+        map.addLayer(layer_20812100_10);
+        function pop_20812100_11(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+        }
+
+        function style_20812100_11_0(feature) {
+            if (feature.properties['_mean'] >= 18.519064 && feature.properties['_mean'] <= 23.460709 ) {
+                return {
+                pane: 'pane_20812100_11',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 23.460709 && feature.properties['_mean'] <= 25.756610 ) {
+                return {
+                pane: 'pane_20812100_11',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 25.756610 && feature.properties['_mean'] <= 27.226566 ) {
+                return {
+                pane: 'pane_20812100_11',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 27.226566 && feature.properties['_mean'] <= 28.324701 ) {
+                return {
+                pane: 'pane_20812100_11',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 28.324701 && feature.properties['_mean'] <= 29.784870 ) {
+                return {
+                pane: 'pane_20812100_11',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 29.784870 && feature.properties['_mean'] <= 30.390531 ) {
+                return {
+                pane: 'pane_20812100_11',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 30.390531 && feature.properties['_mean'] <= 31.218863 ) {
+                return {
+                pane: 'pane_20812100_11',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 31.218863 && feature.properties['_mean'] <= 33.810169 ) {
+                return {
+                pane: 'pane_20812100_11',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 33.810169 && feature.properties['_mean'] <= 37.833340 ) {
+                return {
+                pane: 'pane_20812100_11',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 37.833340 && feature.properties['_mean'] <= 56.570133 ) {
+                return {
+                pane: 'pane_20812100_11',
+                interactive: true,
+            }
+            }
+        }
+        function style_20812100_11_1(feature) {
+            if (feature.properties['_mean'] >= 18.519064 && feature.properties['_mean'] <= 23.460709 ) {
+                return {
+                pane: 'pane_20812100_11',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(240,249,232,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 23.460709 && feature.properties['_mean'] <= 25.756610 ) {
+                return {
+                pane: 'pane_20812100_11',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(216,240,213,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 25.756610 && feature.properties['_mean'] <= 27.226566 ) {
+                return {
+                pane: 'pane_20812100_11',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(192,231,193,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 27.226566 && feature.properties['_mean'] <= 28.324701 ) {
+                return {
+                pane: 'pane_20812100_11',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(165,220,191,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 28.324701 && feature.properties['_mean'] <= 29.784870 ) {
+                return {
+                pane: 'pane_20812100_11',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(137,210,194,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 29.784870 && feature.properties['_mean'] <= 30.390531 ) {
+                return {
+                pane: 'pane_20812100_11',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(110,195,198,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 30.390531 && feature.properties['_mean'] <= 31.218863 ) {
+                return {
+                pane: 'pane_20812100_11',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(86,176,200,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 31.218863 && feature.properties['_mean'] <= 33.810169 ) {
+                return {
+                pane: 'pane_20812100_11',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(60,156,199,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 33.810169 && feature.properties['_mean'] <= 37.833340 ) {
+                return {
+                pane: 'pane_20812100_11',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(34,130,186,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['_mean'] >= 37.833340 && feature.properties['_mean'] <= 56.570133 ) {
+                return {
+                pane: 'pane_20812100_11',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(8,104,172,1.0)',
+                interactive: true,
+            }
+            }
+        }
+        map.createPane('pane_20812100_11');
+        map.getPane('pane_20812100_11').style.zIndex = 411;
+        map.getPane('pane_20812100_11').style['mix-blend-mode'] = 'normal';
+        var layer_20812100_11 = new L.geoJson.multiStyle(json_20812100_11, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_20812100_11',
+            layerName: 'layer_20812100_11',
+            pane: 'pane_20812100_11',
+            onEachFeature: pop_20812100_11,
+            styles: [style_20812100_11_0,style_20812100_11_1,]
+        });
+        bounds_group.addLayer(layer_20812100_11);
+        map.addLayer(layer_20812100_11);
+        function pop__12(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['FNODE_'] !== null ? autolinker.link(feature.properties['FNODE_'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TNODE_'] !== null ? autolinker.link(feature.properties['TNODE_'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['LPOLY_'] !== null ? autolinker.link(feature.properties['LPOLY_'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['RPOLY_'] !== null ? autolinker.link(feature.properties['RPOLY_'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['LENGTH'] !== null ? autolinker.link(feature.properties['LENGTH'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['RIVDD_'] !== null ? autolinker.link(feature.properties['RIVDD_'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['RIVDD_ID'] !== null ? autolinker.link(feature.properties['RIVDD_ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ORDER_'] !== null ? autolinker.link(feature.properties['ORDER_'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NAME'] !== null ? autolinker.link(feature.properties['NAME'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TYPE'] !== null ? autolinker.link(feature.properties['TYPE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style__12_0() {
+            return {
+                pane: 'pane__12',
+                opacity: 1,
+                color: 'rgba(166,206,227,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        function style__12_1() {
+            return {
+                pane: 'pane__12',
+                opacity: 1,
+                color: 'rgba(0,70,117,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        map.createPane('pane__12');
+        map.getPane('pane__12').style.zIndex = 412;
+        map.getPane('pane__12').style['mix-blend-mode'] = 'normal';
+        var layer__12 = new L.geoJson.multiStyle(json__12, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json__12',
+            layerName: 'layer__12',
+            pane: 'pane__12',
+            onEachFeature: pop__12,
+            styles: [style__12_0,style__12_1,]
+        });
+        bounds_group.addLayer(layer__12);
+        map.addLayer(layer__12);
+        function pop__13(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (i in e.target._eventParents) {
+                        e.target._eventParents[i].resetStyle(e.target);
+                    }
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['AREA'] !== null ? autolinker.link(feature.properties['AREA'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PERIMETER'] !== null ? autolinker.link(feature.properties['PERIMETER'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TOWNDD_'] !== null ? autolinker.link(feature.properties['TOWNDD_'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TOWNDD_ID'] !== null ? autolinker.link(feature.properties['TOWNDD_ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NAME_RWIN'] !== null ? autolinker.link(feature.properties['NAME_RWIN'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['STATUS'] !== null ? autolinker.link(feature.properties['STATUS'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['REGION'] !== null ? autolinker.link(feature.properties['REGION'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['POP_95'] !== null ? autolinker.link(feature.properties['POP_95'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CAPITAL'] !== null ? autolinker.link(feature.properties['CAPITAL'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style__13_0() {
+            return {
+                pane: 'pane__13',
+        rotationAngle: 0.0,
+        rotationOrigin: 'center center',
+        icon: L.icon({
+            iconUrl: 'markers/golf.svg',
+            iconSize: [19.0, 19.0]
+        }),
+                interactive: true,
+            }
+        }
+        map.createPane('pane__13');
+        map.getPane('pane__13').style.zIndex = 413;
+        map.getPane('pane__13').style['mix-blend-mode'] = 'normal';
+        var layer__13 = new L.geoJson(json__13, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json__13',
+            layerName: 'layer__13',
+            pane: 'pane__13',
+            onEachFeature: pop__13,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.marker(latlng, style__13_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer__13);
+        map.addLayer(layer__13);
+        var baseMaps = {};
+        L.control.layers(baseMaps,{'<img src="legend/_13.png" /> Города': layer__13,'<img src="legend/_12.png" /> Реки': layer__12,'ЗС уровня осадок с 2081-2100 гг.<br /><table><tr><td style="text-align: center;"><img src="legend/20812100_11_185223460.png" /></td><td>18,52 - 23,46</td></tr><tr><td style="text-align: center;"><img src="legend/20812100_11_234625761.png" /></td><td>23,46 - 25,76</td></tr><tr><td style="text-align: center;"><img src="legend/20812100_11_257627232.png" /></td><td>25,76 - 27,23</td></tr><tr><td style="text-align: center;"><img src="legend/20812100_11_272328323.png" /></td><td>27,23 - 28,32</td></tr><tr><td style="text-align: center;"><img src="legend/20812100_11_283229784.png" /></td><td>28,32 - 29,78</td></tr><tr><td style="text-align: center;"><img src="legend/20812100_11_297830395.png" /></td><td>29,78 - 30,39</td></tr><tr><td style="text-align: center;"><img src="legend/20812100_11_303931226.png" /></td><td>30,39 - 31,22</td></tr><tr><td style="text-align: center;"><img src="legend/20812100_11_312233817.png" /></td><td>31,22 - 33,81</td></tr><tr><td style="text-align: center;"><img src="legend/20812100_11_338137838.png" /></td><td>33,81 - 37,83</td></tr><tr><td style="text-align: center;"><img src="legend/20812100_11_378356579.png" /></td><td>37,83 - 56,57</td></tr></table>': layer_20812100_11,'ЗС уровня максимальной температуры 2081-2100 гг.<br /><table><tr><td style="text-align: center;"><img src="legend/20812100_10_153719350.png" /></td><td>15,37 - 19,35</td></tr><tr><td style="text-align: center;"><img src="legend/20812100_10_193521961.png" /></td><td>19,35 - 21,96</td></tr><tr><td style="text-align: center;"><img src="legend/20812100_10_219623282.png" /></td><td>21,96 - 23,28</td></tr><tr><td style="text-align: center;"><img src="legend/20812100_10_232824153.png" /></td><td>23,28 - 24,15</td></tr><tr><td style="text-align: center;"><img src="legend/20812100_10_241525674.png" /></td><td>24,15 - 25,67</td></tr><tr><td style="text-align: center;"><img src="legend/20812100_10_256726215.png" /></td><td>25,67 - 26,21</td></tr><tr><td style="text-align: center;"><img src="legend/20812100_10_262126716.png" /></td><td>26,21 - 26,71</td></tr><tr><td style="text-align: center;"><img src="legend/20812100_10_267129737.png" /></td><td>26,71 - 29,73</td></tr><tr><td style="text-align: center;"><img src="legend/20812100_10_297332028.png" /></td><td>29,73 - 32,02</td></tr><tr><td style="text-align: center;"><img src="legend/20812100_10_320249729.png" /></td><td>32,02 - 49,72</td></tr></table>': layer_20812100_10,'ЗС уровня минимальной температуры 2081-2100 гг.<br /><table><tr><td style="text-align: center;"><img src="legend/20812100_9_125210020.png" /></td><td>-12,52 - -10,02</td></tr><tr><td style="text-align: center;"><img src="legend/20812100_9_10027861.png" /></td><td>-10,02 - -7,86</td></tr><tr><td style="text-align: center;"><img src="legend/20812100_9_7867732.png" /></td><td>-7,86 - -7,73</td></tr><tr><td style="text-align: center;"><img src="legend/20812100_9_7737183.png" /></td><td>-7,73 - -7,18</td></tr><tr><td style="text-align: center;"><img src="legend/20812100_9_7186814.png" /></td><td>-7,18 - -6,81</td></tr><tr><td style="text-align: center;"><img src="legend/20812100_9_6816545.png" /></td><td>-6,81 - -6,54</td></tr><tr><td style="text-align: center;"><img src="legend/20812100_9_6546216.png" /></td><td>-6,54 - -6,21</td></tr><tr><td style="text-align: center;"><img src="legend/20812100_9_6216047.png" /></td><td>-6,21 - -6,04</td></tr><tr><td style="text-align: center;"><img src="legend/20812100_9_6045138.png" /></td><td>-6,04 - -5,13</td></tr><tr><td style="text-align: center;"><img src="legend/20812100_9_5132969.png" /></td><td>-5,13 - -2,96</td></tr></table>': layer_20812100_9,'ЗС уровня осадов 2061-2080 гг.<br /><table><tr><td style="text-align: center;"><img src="legend/20612080_8_170921450.png" /></td><td>17,09 - 21,45</td></tr><tr><td style="text-align: center;"><img src="legend/20612080_8_214523831.png" /></td><td>21,45 - 23,83</td></tr><tr><td style="text-align: center;"><img src="legend/20612080_8_238325372.png" /></td><td>23,83 - 25,37</td></tr><tr><td style="text-align: center;"><img src="legend/20612080_8_2537263.png" /></td><td>25,37 - 26</td></tr><tr><td style="text-align: center;"><img src="legend/20612080_8_2627794.png" /></td><td>26 - 27,79</td></tr><tr><td style="text-align: center;"><img src="legend/20612080_8_277928555.png" /></td><td>27,79 - 28,55</td></tr><tr><td style="text-align: center;"><img src="legend/20612080_8_285529276.png" /></td><td>28,55 - 29,27</td></tr><tr><td style="text-align: center;"><img src="legend/20612080_8_292732327.png" /></td><td>29,27 - 32,32</td></tr><tr><td style="text-align: center;"><img src="legend/20612080_8_32323528.png" /></td><td>32,32 - 35,2</td></tr><tr><td style="text-align: center;"><img src="legend/20612080_8_3525439.png" /></td><td>35,2 - 54,3</td></tr></table>': layer_20612080_8,'ЗС уровня максимальной температуры 2061-2080 гг.<br /><table><tr><td style="text-align: center;"><img src="legend/20612080_7_3953170.png" /></td><td>-3,95 - -3,17</td></tr><tr><td style="text-align: center;"><img src="legend/20612080_7_3172961.png" /></td><td>-3,17 - -2,96</td></tr><tr><td style="text-align: center;"><img src="legend/20612080_7_2961852.png" /></td><td>-2,96 - -1,85</td></tr><tr><td style="text-align: center;"><img src="legend/20612080_7_1850783.png" /></td><td>-1,85 - -0,78</td></tr><tr><td style="text-align: center;"><img src="legend/20612080_7_0780874.png" /></td><td>-0,78 - 0,87</td></tr><tr><td style="text-align: center;"><img src="legend/20612080_7_0871555.png" /></td><td>0,87 - 1,55</td></tr><tr><td style="text-align: center;"><img src="legend/20612080_7_1551936.png" /></td><td>1,55 - 1,93</td></tr><tr><td style="text-align: center;"><img src="legend/20612080_7_1932447.png" /></td><td>1,93 - 2,44</td></tr><tr><td style="text-align: center;"><img src="legend/20612080_7_2443038.png" /></td><td>2,44 - 3,03</td></tr><tr><td style="text-align: center;"><img src="legend/20612080_7_3035169.png" /></td><td>3,03 - 5,16</td></tr></table>': layer_20612080_7,'ЗС уровня минимальной температуры 2061-2080<br /><table><tr><td style="text-align: center;"><img src="legend/20612080_6_156913220.png" /></td><td>-15,69 - -13,22</td></tr><tr><td style="text-align: center;"><img src="legend/20612080_6_13221111.png" /></td><td>-13,22 - -11,1</td></tr><tr><td style="text-align: center;"><img src="legend/20612080_6_1111072.png" /></td><td>-11,1 - -10,7</td></tr><tr><td style="text-align: center;"><img src="legend/20612080_6_10710593.png" /></td><td>-10,7 - -10,59</td></tr><tr><td style="text-align: center;"><img src="legend/20612080_6_105910284.png" /></td><td>-10,59 - -10,28</td></tr><tr><td style="text-align: center;"><img src="legend/20612080_6_10289865.png" /></td><td>-10,28 - -9,86</td></tr><tr><td style="text-align: center;"><img src="legend/20612080_6_986976.png" /></td><td>-9,86 - -9,7</td></tr><tr><td style="text-align: center;"><img src="legend/20612080_6_979077.png" /></td><td>-9,7 - -9,07</td></tr><tr><td style="text-align: center;"><img src="legend/20612080_6_9078328.png" /></td><td>-9,07 - -8,32</td></tr><tr><td style="text-align: center;"><img src="legend/20612080_6_8325739.png" /></td><td>-8,32 - -5,73</td></tr></table>': layer_20612080_6,'ЗС уровня осадок с 2041-2060 гг.<br /><table><tr><td style="text-align: center;"><img src="legend/20412060_5_160820310.png" /></td><td>16,08 - 20,31</td></tr><tr><td style="text-align: center;"><img src="legend/20412060_5_203122881.png" /></td><td>20,31 - 22,88</td></tr><tr><td style="text-align: center;"><img src="legend/20412060_5_228824252.png" /></td><td>22,88 - 24,25</td></tr><tr><td style="text-align: center;"><img src="legend/20412060_5_242525183.png" /></td><td>24,25 - 25,18</td></tr><tr><td style="text-align: center;"><img src="legend/20412060_5_251826634.png" /></td><td>25,18 - 26,63</td></tr><tr><td style="text-align: center;"><img src="legend/20412060_5_266327425.png" /></td><td>26,63 - 27,42</td></tr><tr><td style="text-align: center;"><img src="legend/20412060_5_2742286.png" /></td><td>27,42 - 28</td></tr><tr><td style="text-align: center;"><img src="legend/20412060_5_2830767.png" /></td><td>28 - 30,76</td></tr><tr><td style="text-align: center;"><img src="legend/20412060_5_307633668.png" /></td><td>30,76 - 33,66</td></tr><tr><td style="text-align: center;"><img src="legend/20412060_5_3366529.png" /></td><td>33,66 - 52</td></tr></table>': layer_20412060_5,'ЗС уровня максимальной температуры 2041-2060 гг.<br /><table><tr><td style="text-align: center;"><img src="legend/20412060_4_6786110.png" /></td><td>-6,78 - -6,11</td></tr><tr><td style="text-align: center;"><img src="legend/20412060_4_6115551.png" /></td><td>-6,11 - -5,55</td></tr><tr><td style="text-align: center;"><img src="legend/20412060_4_5554412.png" /></td><td>-5,55 - -4,41</td></tr><tr><td style="text-align: center;"><img src="legend/20412060_4_441353.png" /></td><td>-4,41 - -3,5</td></tr><tr><td style="text-align: center;"><img src="legend/20412060_4_35144.png" /></td><td>-3,5 - -1,4</td></tr><tr><td style="text-align: center;"><img src="legend/20412060_4_140895.png" /></td><td>-1,4 - -0,89</td></tr><tr><td style="text-align: center;"><img src="legend/20412060_4_0890586.png" /></td><td>-0,89 - -0,58</td></tr><tr><td style="text-align: center;"><img src="legend/20412060_4_0580027.png" /></td><td>-0,58 - 0,02</td></tr><tr><td style="text-align: center;"><img src="legend/20412060_4_002098.png" /></td><td>0,02 - 0,9</td></tr><tr><td style="text-align: center;"><img src="legend/20412060_4_092959.png" /></td><td>0,9 - 2,95</td></tr></table>': layer_20412060_4,'ЗС уровня минимальной температуры 2041-2060 гг.<br /><table><tr><td style="text-align: center;"><img src="legend/20412060_3_180615880.png" /></td><td>-18,06 - -15,88</td></tr><tr><td style="text-align: center;"><img src="legend/20412060_3_158814081.png" /></td><td>-15,88 - -14,08</td></tr><tr><td style="text-align: center;"><img src="legend/20412060_3_140813552.png" /></td><td>-14,08 - -13,55</td></tr><tr><td style="text-align: center;"><img src="legend/20412060_3_135513383.png" /></td><td>-13,55 - -13,38</td></tr><tr><td style="text-align: center;"><img src="legend/20412060_3_133813124.png" /></td><td>-13,38 - -13,12</td></tr><tr><td style="text-align: center;"><img src="legend/20412060_3_131212895.png" /></td><td>-13,12 - -12,89</td></tr><tr><td style="text-align: center;"><img src="legend/20412060_3_128912376.png" /></td><td>-12,89 - -12,37</td></tr><tr><td style="text-align: center;"><img src="legend/20412060_3_123711737.png" /></td><td>-12,37 - -11,73</td></tr><tr><td style="text-align: center;"><img src="legend/20412060_3_117311188.png" /></td><td>-11,73 - -11,18</td></tr><tr><td style="text-align: center;"><img src="legend/20412060_3_11188189.png" /></td><td>-11,18 - -8,18</td></tr></table>': layer_20412060_3,'ЗС уровня осадок с 2021-2040 гг.<br /><table><tr><td style="text-align: center;"><img src="legend/20212040_2_160820310.png" /></td><td>16,08 - 20,31</td></tr><tr><td style="text-align: center;"><img src="legend/20212040_2_203122881.png" /></td><td>20,31 - 22,88</td></tr><tr><td style="text-align: center;"><img src="legend/20212040_2_228824252.png" /></td><td>22,88 - 24,25</td></tr><tr><td style="text-align: center;"><img src="legend/20212040_2_242525183.png" /></td><td>24,25 - 25,18</td></tr><tr><td style="text-align: center;"><img src="legend/20212040_2_251826634.png" /></td><td>25,18 - 26,63</td></tr><tr><td style="text-align: center;"><img src="legend/20212040_2_266327425.png" /></td><td>26,63 - 27,42</td></tr><tr><td style="text-align: center;"><img src="legend/20212040_2_2742286.png" /></td><td>27,42 - 28</td></tr><tr><td style="text-align: center;"><img src="legend/20212040_2_2830767.png" /></td><td>28 - 30,76</td></tr><tr><td style="text-align: center;"><img src="legend/20212040_2_307633668.png" /></td><td>30,76 - 33,66</td></tr><tr><td style="text-align: center;"><img src="legend/20212040_2_3366529.png" /></td><td>33,66 - 52</td></tr></table>': layer_20212040_2,'ЗС уровня максимальной температуры 2021-2040 гг.<br /><table><tr><td style="text-align: center;"><img src="legend/20212040_1_8497510.png" /></td><td>-8,49 - -7,51</td></tr><tr><td style="text-align: center;"><img src="legend/20212040_1_7516891.png" /></td><td>-7,51 - -6,89</td></tr><tr><td style="text-align: center;"><img src="legend/20212040_1_6895842.png" /></td><td>-6,89 - -5,84</td></tr><tr><td style="text-align: center;"><img src="legend/20212040_1_5844823.png" /></td><td>-5,84 - -4,82</td></tr><tr><td style="text-align: center;"><img src="legend/20212040_1_4822714.png" /></td><td>-4,82 - -2,71</td></tr><tr><td style="text-align: center;"><img src="legend/20212040_1_2712225.png" /></td><td>-2,71 - -2,22</td></tr><tr><td style="text-align: center;"><img src="legend/20212040_1_2221966.png" /></td><td>-2,22 - -1,96</td></tr><tr><td style="text-align: center;"><img src="legend/20212040_1_1961327.png" /></td><td>-1,96 - -1,32</td></tr><tr><td style="text-align: center;"><img src="legend/20212040_1_1320358.png" /></td><td>-1,32 - -0,35</td></tr><tr><td style="text-align: center;"><img src="legend/20212040_1_0351689.png" /></td><td>-0,35 - 1,68</td></tr></table>': layer_20212040_1,'ЗС уровня минимальной температуры 2021-2040 гг.<br /><table><tr><td style="text-align: center;"><img src="legend/20212040_0_194617350.png" /></td><td>-19,46 - -17,35</td></tr><tr><td style="text-align: center;"><img src="legend/20212040_0_173515761.png" /></td><td>-17,35 - -15,76</td></tr><tr><td style="text-align: center;"><img src="legend/20212040_0_157615122.png" /></td><td>-15,76 - -15,12</td></tr><tr><td style="text-align: center;"><img src="legend/20212040_0_151214933.png" /></td><td>-15,12 - -14,93</td></tr><tr><td style="text-align: center;"><img src="legend/20212040_0_149314634.png" /></td><td>-14,93 - -14,63</td></tr><tr><td style="text-align: center;"><img src="legend/20212040_0_146314415.png" /></td><td>-14,63 - -14,41</td></tr><tr><td style="text-align: center;"><img src="legend/20212040_0_14411396.png" /></td><td>-14,41 - -13,9</td></tr><tr><td style="text-align: center;"><img src="legend/20212040_0_13913247.png" /></td><td>-13,9 - -13,24</td></tr><tr><td style="text-align: center;"><img src="legend/20212040_0_13241278.png" /></td><td>-13,24 - -12,7</td></tr><tr><td style="text-align: center;"><img src="legend/20212040_0_1279639.png" /></td><td>-12,7 - -9,63</td></tr></table>': layer_20212040_0,}).addTo(map);
+        setBounds();
+        </script>
+    </body>
+</html>
